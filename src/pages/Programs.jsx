@@ -31,9 +31,7 @@ const Programs = () => {
     { id: 'business', name: 'Business', icon: Building },
     { id: 'health', name: 'Health Sciences', icon: Heart },
     { id: 'engineering', name: 'Engineering', icon: Calculator },
-    { id: 'arts', name: 'Arts & Humanities', icon: Palette },
-    { id: 'law', name: 'Law', icon: Scale },
-    { id: 'science', name: 'Sciences', icon: Microscope }
+  
   ];
 
   const programs = [
@@ -97,66 +95,8 @@ const Programs = () => {
       requirements: ['High School Diploma', 'SAT/ACT Scores', 'Biology & Chemistry Prerequisites'],
       careerPaths: ['Doctor', 'Medical Researcher', 'Healthcare Administrator', 'Public Health Specialist']
     },
-    {
-      id: 'psychology',
-      title: 'Psychology',
-      category: 'science',
-      description: 'Explore human behavior and mental processes through scientific study.',
-      duration: '4 years',
-      degree: 'Bachelor of Arts',
-      tuition: '$38,000/year',
-      students: '750',
-      rating: 4.6,
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=300&fit=crop',
-      features: ['Cognitive Psychology', 'Clinical Psychology', 'Research Methods', 'Statistics'],
-      requirements: ['High School Diploma', 'SAT/ACT Scores', 'Psychology Prerequisites'],
-      careerPaths: ['Clinical Psychologist', 'Counselor', 'Research Assistant', 'Human Resources']
-    },
-    {
-      id: 'arts',
-      title: 'Fine Arts',
-      category: 'arts',
-      description: 'Develop your creative skills and artistic vision in a supportive environment.',
-      duration: '4 years',
-      degree: 'Bachelor of Fine Arts',
-      tuition: '$35,000/year',
-      students: '400',
-      rating: 4.5,
-      image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=500&h=300&fit=crop',
-      features: ['Painting & Drawing', 'Sculpture', 'Digital Art', 'Art History'],
-      requirements: ['High School Diploma', 'Portfolio Review', 'Art Prerequisites'],
-      careerPaths: ['Artist', 'Art Teacher', 'Gallery Curator', 'Graphic Designer']
-    },
-    {
-      id: 'law',
-      title: 'Pre-Law',
-      category: 'law',
-      description: 'Build a strong foundation for law school with critical thinking and analysis.',
-      duration: '4 years',
-      degree: 'Bachelor of Arts',
-      tuition: '$40,000/year',
-      students: '300',
-      rating: 4.7,
-      image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=500&h=300&fit=crop',
-      features: ['Constitutional Law', 'Legal Writing', 'Political Science', 'Ethics'],
-      requirements: ['High School Diploma', 'SAT/ACT Scores', 'English Proficiency'],
-      careerPaths: ['Lawyer', 'Legal Assistant', 'Paralegal', 'Policy Analyst']
-    },
-    {
-      id: 'nursing',
-      title: 'Nursing',
-      category: 'health',
-      description: 'Prepare for a rewarding career in healthcare with hands-on clinical experience.',
-      duration: '4 years',
-      degree: 'Bachelor of Science in Nursing',
-      tuition: '$46,000/year',
-      students: '650',
-      rating: 4.8,
-      image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&h=300&fit=crop',
-      features: ['Clinical Practice', 'Patient Care', 'Medical Technology', 'Healthcare Ethics'],
-      requirements: ['High School Diploma', 'SAT/ACT Scores', 'Biology & Chemistry Prerequisites'],
-      careerPaths: ['Registered Nurse', 'Nurse Practitioner', 'Nurse Educator', 'Healthcare Manager']
-    }
+    
+
   ];
 
   const filteredPrograms = programs.filter(program => {
@@ -272,7 +212,7 @@ const Programs = () => {
 
       {/* Programs Grid */}
       <section className="py-12">
-        <div className="container">
+        <div className="container px-4 sm:px-6 lg:px-10">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -284,7 +224,7 @@ const Programs = () => {
               <motion.div
                 key={program.id}
                 variants={itemVariants}
-                className="card overflow-hidden group hover:scale-105"
+                className="card overflow-hidden group hover:scale-105 mx-2"
               >
                 {/* Program Image */}
                 <div className="relative h-48 overflow-hidden">

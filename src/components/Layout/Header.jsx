@@ -40,8 +40,8 @@ const Header = () => {
                   to={item.href}
                   className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover-lift ${
                     isActive(item.href)
-                      ? 'text-primary-600 bg-primary-50 shadow-soft'
-                      : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
+                      ? 'text-blue-600 bg-blue-50 shadow-soft'
+                      : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                   }`}
                 >
                   {Icon && <Icon className="h-4 w-4" />}
@@ -51,24 +51,17 @@ const Header = () => {
             })}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/admission"
-              className="btn btn-primary group"
-            >
-              <User className="h-4 w-4" />
-              <span>Apply Now</span>
-            </Link>
-          </div>
+          {/* Theme Toggle removed */}
 
           {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-600 hover:text-primary-600 hover:bg-gray-50 transition-colors duration-300"
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="md:hidden flex items-center space-x-2">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-300"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -84,8 +77,8 @@ const Header = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className={`flex items-center space-x-2 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
                       isActive(item.href)
-                        ? 'text-primary-600 bg-primary-50 shadow-soft'
-                        : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
+                        ? 'text-blue-600 bg-blue-50 shadow-soft'
+                        : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                     }`}
                   >
                     {Icon && <Icon className="h-4 w-4" />}
@@ -93,14 +86,6 @@ const Header = () => {
                   </Link>
                 );
               })}
-              <Link
-                to="/admission"
-                onClick={() => setIsMenuOpen(false)}
-                className="btn btn-primary justify-center mt-4"
-              >
-                <User className="h-4 w-4" />
-                <span>Apply Now</span>
-              </Link>
             </nav>
           </div>
         )}
