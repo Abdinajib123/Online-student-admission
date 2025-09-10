@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import Programs from './pages/Programs';
@@ -14,17 +14,39 @@ import AdminDepartments from './pages/AdminDepartments';
 import AdminAddProgram from './pages/AdminAddProgram';
 import AdminAddFaculty from './pages/AdminAddFaculty';
 import AdminAddDepartment from './pages/AdminAddDepartment';
+import LoginPage from './pages/login';
+import { useAppContext, AppProvider } from './contexts/AppContext';
 
-function App() {
+function RequireAuth() {
+  const { currentUser } = useAppContext();
+  if (!currentUser) {
+    return <Navigate to="/login" replace />;
+  }
+  return <Outlet />;
+}
+
+function RequireAdmin() {
+  const { currentUser, isAdmin } = useAppContext();
+  if (!currentUser) {
+    return <Navigate to="/login" replace />;
+  }
+  if (!isAdmin) {
+    return <Navigate to="/" replace />;
+  }
+  return <Outlet />;
+}
+
+function AppRoutes() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="programs" element={<Programs />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="admission" element={<Admission />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="programs" element={<Programs />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="admission" element={<Admission />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route element={<RequireAdmin />}>
           <Route path="admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="students" element={<AdminStudents />} />
@@ -36,7 +58,17 @@ function App() {
             <Route path="departments/add" element={<AdminAddDepartment />} />
           </Route>
         </Route>
-      </Routes>
+      </Route>
+    </Routes>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppProvider>
+        <AppRoutes />
+      </AppProvider>
     </Router>
   );
 }
